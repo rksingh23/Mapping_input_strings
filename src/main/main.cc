@@ -3,30 +3,14 @@
 #include<vector>
 
 int main() {
-  Solution solution;
-  int num=5;
+  CPPLib s;
+  std::string from="af2";
+  std::string to="ksa";
 
-  std::cout << "Recursive Prime result for "<<num<< std::endl;
-  for (auto n:solution.FindPrimeRecursive(num)){
-    std::cout<<n<<std::endl;
-  }
+  std::map<char, char> map = s.Mappable(from,to); 
+  for (const auto & iter : map)
+  std::cout << iter.first << " -> " << iter.second << std::endl;
 
-  std::cout << "Seive Prime result for "<<num<< std::endl;
-  for (auto n:solution.Prime_SieveOfEratosthenes(num)){
-    std::cout<<n<<std::endl;
-  }
-
-  num=-1;
-
-  std::cout << "Recursive Prime result for "<<num<< std::endl;
-  for (auto n:solution.FindPrimeRecursive(num)){
-    std::cout<<n<<std::endl;
-  }
-
-  std::cout << "Seive Prime result for "<<num<< std::endl;
-  for (auto n:solution.Prime_SieveOfEratosthenes(num)){
-    std::cout<<n<<std::endl;
-  }
 
   return 0;
 }

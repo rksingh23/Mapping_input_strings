@@ -3,95 +3,94 @@
 #include <vector>
 
 
-
-TEST(FindPrimeTest, HandlesPositiveNumberSeive) {
-  Solution solution;
-
-  int num=5;
-  std::vector<int> vect1{2,3,5};
-  std::vector<int> cmp;
-  for (auto n:solution.Prime_SieveOfEratosthenes(num)){
-    cmp.push_back (n);
+TEST(Q7_Student, HandlesNumbers) {
+  CPPLib object1;
+  std::string from="af2";
+  std::string to="ksa";
+  
+  std::map<char,char> vect1{{'2','a'},{'a','k'},{'f','s'}};
+  std::map<char, char> cmp = object1.Mappable(from,to);
+  
+  std::string key{};
+  std::string value{};
+  for (auto iter : cmp)
+  {
+    key= key+iter.first ;
+    value= value+iter.second;
   }
-  ASSERT_EQ(cmp.size(), vect1.size()) << "Vectors x and y are of unequal length";
-  for (unsigned int i = 0; i < vect1.size(); ++i){
-    EXPECT_EQ(cmp[i],vect1[i]);
+
+  std::string key1{};
+  std::string value1{};
+  for (auto iter : vect1)
+  {
+    key1= key1+iter.first ;
+    value1= value1+iter.second;
+  }
+
+  ASSERT_EQ(key.length(), key1.length()) << "Vectors x and y are of unequal length";
+  ASSERT_EQ(value.length(), value1.length()) << "Vectors x and y are of unequal length";
+  for (int unsigned i = 0; i < key.size(); ++i){
+    EXPECT_EQ(key,key1);
+    EXPECT_EQ(value,value1);
   } 
 }
 
-TEST(FindPrimeTest, HandlesPositiveNumberRecursive) {
-  Solution solution;
-
-  int num=5;
-  std::vector<int> vect1{2,3,5};
-  std::vector<int> cmp;
-  for (auto n:solution.FindPrimeRecursive(num)){
-    cmp.push_back (n);
+TEST(Q7_Student, HandlesCorrectData) {
+  CPPLib object1;
+  std::string from="askasd";
+  std::string to="ksaksf";
+  
+  std::map<char,char> vect1{{'a','k'},{'d','f'},{'k','a'},{'s','s'}};
+  std::map<char, char> cmp = object1.Mappable(from,to);
+  
+  std::string key{};
+  std::string value{};
+  for (auto iter : cmp)
+  {
+    key= key+iter.first ;
+    value= value+iter.second;
   }
-  ASSERT_EQ(cmp.size(), vect1.size()) << "Vectors x and y are of unequal length";
-  for (unsigned int i = 0; i < vect1.size(); ++i){
-    EXPECT_EQ(cmp[i],vect1[i]);
+
+  std::string key1{};
+  std::string value1{};
+  for (auto iter : vect1)
+  {
+    key1= key1+iter.first ;
+    value1= value1+iter.second;
+  }
+
+  ASSERT_EQ(key.length(), key1.length()) << "Vectors x and y are of unequal length";
+  ASSERT_EQ(value.length(), value1.length()) << "Vectors x and y are of unequal length";
+  for (int unsigned i = 0; i < key.size(); ++i){
+    EXPECT_EQ(key,key1);
+    EXPECT_EQ(value,value1);
   } 
 }
 
-
-TEST(FindPrimeTest, HandlesNegativeNumberSeive) {
-  Solution solution;
-
-  int num=-1;
-  std::vector<int> vect1{-1};
-  std::vector<int> cmp;
-  for (auto n:solution.Prime_SieveOfEratosthenes(num)){
-    cmp.push_back (n);
-  }
-  ASSERT_EQ(cmp.size(), vect1.size()) << "Vectors x and y are of unequal length";
-  for (unsigned int i = 0; i < vect1.size(); ++i){
-    EXPECT_EQ(cmp[i],vect1[i]);
-  } 
+//Negative Tests
+TEST(Q7_Student, HandlesEmptyVector) {
+  CPPLib object1;
+  std::string from="";
+  std::string to="";
+  
+  std::map<char, char> cmp = object1.Mappable(from,to);
+  EXPECT_EQ(cmp.empty(),true);
 }
 
-TEST(FindPrimeTest, HandlesNegativeNumberRecursive) {
-  Solution solution;
-
-  int num=-1;
-  std::vector<int> vect1{-1};
-  std::vector<int> cmp;
-  for (auto n:solution.FindPrimeRecursive(num)){
-    cmp.push_back (n);
-  }
-  ASSERT_EQ(cmp.size(), vect1.size()) << "Vectors x and y are of unequal length";
-  for (unsigned int i = 0; i < vect1.size(); ++i){
-    EXPECT_EQ(cmp[i],vect1[i]);
-  } 
+TEST(Q7_Student, HandlesVectorWithExceptionMultipleMapping) {
+  CPPLib object1;
+  std::string from="afa";
+  std::string to="ksa";
+  
+  std::map<char, char> cmp = object1.Mappable(from,to);
+  EXPECT_EQ(cmp.empty(),true);
 }
 
-
-TEST(FindPrimeTest, HandlesZeroSeive) {
-  Solution solution;
-
-  int num=0;
-  std::vector<int> vect1{-1};
-  std::vector<int> cmp;
-  for (auto n:solution.Prime_SieveOfEratosthenes(num)){
-    cmp.push_back (n);
-  }
-  ASSERT_EQ(cmp.size(), vect1.size()) << "Vectors x and y are of unequal length";
-  for (unsigned int i = 0; i < vect1.size(); ++i){
-    EXPECT_EQ(cmp[i],vect1[i]);
-  } 
-}
-
-TEST(FindPrimeTest, HandlesZerorRecursive) {
-  Solution solution;
-
-  int num=0;
-  std::vector<int> vect1{-1};
-  std::vector<int> cmp;
-  for (auto n:solution.FindPrimeRecursive(num)){
-    cmp.push_back (n);
-  }
-  ASSERT_EQ(cmp.size(), vect1.size()) << "Vectors x and y are of unequal length";
-  for (unsigned int i = 0; i < vect1.size(); ++i){
-    EXPECT_EQ(cmp[i],vect1[i]);
-  } 
+TEST(Q7_Student, HandlesVectorWithExceptionDifferentSize) {
+  CPPLib object1;
+  std::string from="af";
+  std::string to="ksa";
+  
+  std::map<char, char> cmp = object1.Mappable(from,to);
+  EXPECT_EQ(cmp.empty(),true);
 }
